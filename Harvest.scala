@@ -33,6 +33,8 @@ object Harvest extends Enumeration {
     var min = harvestArray(0)(0);
     var sum = 0;
     var mini = 0; var minj = 0;
+    var sortedHarvest = Array(0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0)
+    var k = 0;
 
     for(i<- 0 to 3){
       for(j<- 0 to 6){
@@ -46,7 +48,8 @@ object Harvest extends Enumeration {
           maxi = i; maxj = j;
         }
         sum = sum + harvestArray(i)(j);
-
+        sortedHarvest(k) =  harvestArray(i)(j);
+        k = k+1;
       }
     }
 
@@ -60,11 +63,14 @@ object Harvest extends Enumeration {
     println("Average Harvest = " + Average);
     println("Range = " + Range);
 
-    scala.util.Sorting.quickSort(harvestArray(0));
-    scala.util.Sorting.quickSort(harvestArray(1));
-    scala.util.Sorting.quickSort(harvestArray(2));
-    scala.util.Sorting.quickSort(harvestArray(3));
-
-    scala.util.Sorting.quickSort(harvestArray);
+    scala.util.Sorting.quickSort(sortedHarvest)
+    var Median:Float = (sortedHarvest(14)+sortedHarvest(15))/2;
+    println("Median = " + Median);
+    // scala.util.Sorting.quickSort(harvestArray(0));
+    // scala.util.Sorting.quickSort(harvestArray(1));
+    // scala.util.Sorting.quickSort(harvestArray(2));
+    // scala.util.Sorting.quickSort(harvestArray(3));
+    // println(harvestArray(3)(0));
+    //scala.util.Sorting.quickSort(harvestArray);
   }
 }
